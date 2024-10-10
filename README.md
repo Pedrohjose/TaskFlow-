@@ -36,10 +36,3 @@ git clone https://github.com/seu-usuario/hirehub.git
 
 ## 🗂️ Licença
 Este projeto está licenciado sob a MIT License.
-
-## 📧 Contato
-Para mais informações, entre em contato com a equipe através do e-mail: talentforgeblu@gmail.com
-
----
-
-Esse README reflete os objetivos e funcionalidades descritos no seu projeto. Caso precise de mais ajustes, estou à disposição!
