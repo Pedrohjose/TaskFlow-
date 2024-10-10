@@ -1,14 +1,13 @@
-Aqui está o README ajustado para o projeto, incorporando as informações e o contexto atual:
 
----
-
-# 🎯 **TalentForge: Capacitação e Contratação Inclusiva com HireHub**
+# 🎯 **TaskFlow**
 
 ## 📘 Sobre o Projeto
-**HireHub** é uma plataforma desenvolvida pelo grupo **TalentForge** com o objetivo de melhorar a gestão de tarefas em ambientes corporativos, com foco na capacitação e contratação inclusiva. Nosso sistema permitirá o cadastro, acompanhamento e conclusão de tarefas, promovendo a inclusão e a diversidade no mercado de trabalho.
+O **TaskFlow** é um sistema , focado em desenvolver soluções que transformam a gestão de tarefas em ambientes corporativos. Nossa equipe é composta por profissionais apaixonados, cada um trazendo habilidades únicas e uma visão compartilhada de inclusão e diversidade no mercado de trabalho.
 
 ## 🌟 Objetivos
 - **Gerenciamento de Tarefas:** Facilitar o gerenciamento de tarefas para desenvolvedores e equipes, oferecendo controle sobre o ciclo de vida de cada tarefa.
+
+
 
 ## 🛠️ Tecnologias Utilizadas
 ### Backend:
@@ -20,6 +19,11 @@ Aqui está o README ajustado para o projeto, incorporando as informações e o c
 - ![HTML5](https://img.shields.io/badge/HTML5-E34F26.svg?style=flat&logo=html5&logoColor=white) HTML
 - ![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=flat&logo=css3&logoColor=white) CSS
 - ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&logo=javascript&logoColor=black) JavaScript
+
+## 📋 Requisitos de Sistema
+- Java 11 ou superior
+- Apache Maven
+- MySQL 8.0 ou superior
   
 ## 👥 Equipe
 - **Pedro Comandolli** - Líder do Projeto
