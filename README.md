@@ -1,12 +1,14 @@
+Aqui está o README ajustado para o projeto, incorporando as informações e o contexto atual:
+
+---
+
 # 🎯 **TalentForge: Capacitação e Contratação Inclusiva com HireHub**
 
 ## 📘 Sobre o Projeto
-**HireHub** é uma plataforma desenvolvida pelo grupo **TalentForge** com o objetivo de diminuir a desigualdade e aumentar a empregabilidade. Nossa missão é conectar talentos a oportunidades, promovendo a inclusão e a diversidade no mercado de trabalho.
+**HireHub** é uma plataforma desenvolvida pelo grupo **TalentForge** com o objetivo de melhorar a gestão de tarefas em ambientes corporativos, com foco na capacitação e contratação inclusiva. Nosso sistema permitirá o cadastro, acompanhamento e conclusão de tarefas, promovendo a inclusão e a diversidade no mercado de trabalho.
 
 ## 🌟 Objetivos
-- **Diminuir a desigualdade:** Promover oportunidades iguais para todos os profissionais, independentemente de sua origem ou condição.
-- **Aumentar a empregabilidade:** Facilitar a capacitação e a contratação, utilizando um sistema que promove a inclusão com perfis de alunos mais personalizados, conectando-os a oportunidades que se adequem às suas habilidades e necessidades.
-
+- **Gerenciamento de Tarefas:** Facilitar o gerenciamento de tarefas para desenvolvedores e equipes, oferecendo controle sobre o ciclo de vida de cada tarefa.
 
 ## 🛠️ Tecnologias Utilizadas
 ### Backend:
@@ -18,17 +20,13 @@
 - ![HTML5](https://img.shields.io/badge/HTML5-E34F26.svg?style=flat&logo=html5&logoColor=white) HTML
 - ![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=flat&logo=css3&logoColor=white) CSS
 - ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&logo=javascript&logoColor=black) JavaScript
-
+  
 ## 👥 Equipe
-- **Thomas Hess** - Líder do Projeto
-- **Pedro José** - Líder do Frontend
-- **Elisa Vitória** - Líder do Backend
-- **Jonathan** - Desenvolvedor Backend
-- **Thiago** - Desenvolvedor Backend
-- **João Ataide** - Desenvolvedor Backend
-- **Erick Vinicius** - Desenvolvedor Backend
-- **Daniel** - Desenvolvedor Frontend
-
+- **Pedro Comandolli** - Líder do Projeto
+- **Pedro José** - Desenvolvedor Fullstack
+- **Gustavo Libório** - Desenvolvedor Backend
+- **Enzo** - Desenvolvedor Frontend
+  
 ## 📦 Como clonar o repositório
 Sinta-se à vontade para clonar o repositório usando o seguinte comando:
 
@@ -36,9 +34,12 @@ Sinta-se à vontade para clonar o repositório usando o seguinte comando:
 git clone https://github.com/seu-usuario/hirehub.git
 ```
 
-
-Licença
+## 🗂️ Licença
 Este projeto está licenciado sob a MIT License.
 
-Contato
+## 📧 Contato
 Para mais informações, entre em contato com a equipe através do e-mail: talentforgeblu@gmail.com
+
+---
+
+Esse README reflete os objetivos e funcionalidades descritos no seu projeto. Caso precise de mais ajustes, estou à disposição!
