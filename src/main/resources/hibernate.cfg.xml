@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC   "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hemolink?serverTimezone=America/Sao_Paulo</property>
+		<property name="hbm2ddl.auto">update</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
+		<mapping class="br.senac.hemolink.modelo.entidade.aquisicaoConquista.AquisicaoConquista" />
+		<mapping class="br.senac.hemolink.modelo.entidade.armazenamento.Armazenamento" />
+		<mapping class="br.senac.hemolink.modelo.entidade.campanha.Campanha" />
+		<mapping class="br.senac.hemolink.modelo.entidade.conquista.Conquista" />
+		<mapping class="br.senac.hemolink.modelo.entidade.contato.Contato" />
+		<mapping class="br.senac.hemolink.modelo.entidade.demanda.Demanda" />
+		<mapping class="br.senac.hemolink.modelo.entidade.doacao.Doacao" />
+		<mapping class="br.senac.hemolink.modelo.entidade.endereco.Endereco" />
+		<mapping class="br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue" />
+		<mapping class="br.senac.hemolink.modelo.entidade.papel.Papel" />
+		<mapping class="br.senac.hemolink.modelo.entidade.usuario.Usuario" />
+		<mapping class="br.senac.hemolink.modelo.entidade.usuario.doador.Doador" />
+		<mapping class="br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro" />
+	</session-factory>
+</hibernate-configuration>
