@@ -7,6 +7,7 @@ public interface UsuarioDAO {
     void cadastrarUsuario(Usuario usuario);
     void alterarUsuario(Usuario usuario);
     void inativarUsuario(Usuario usuario);
+    void deletarUsuario(Usuario usuario);
     Usuario consultarUsuario(Long id);
     List<Usuario> listarUsuarios();
 }

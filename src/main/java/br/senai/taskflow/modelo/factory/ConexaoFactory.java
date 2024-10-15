@@ -1,33 +1,26 @@
 package br.senai.taskflow.modelo.factory;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 public class ConexaoFactory {
 
-    private static SessionFactory sessionFactory;
+	public SessionFactory getConexao() {
+                // Criando a configuração do Hibernate
+                Configuration configuracao = new Configuration();
 
-    static {
-        try {
-            // Configuração do Hibernate
-            sessionFactory = new Configuration()
-                    .configure("hibernate.cfg.xml") // carrega o arquivo de configuração do Hibernate
-                    .buildSessionFactory();
-        } catch (Throwable ex) {
-            // Log a exceção
-            System.err.println("Falha na criação da SessionFactory: " + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
-    }
+                // Adicionando as classes anotadas do seu sistema
+                configuracao.addAnnotatedClass(br.senai.taskflow.modelo.entidade.desenvolvedor.Desenvolvedor.class);
+                configuracao.addAnnotatedClass(br.senai.taskflow.modelo.entidade.tarefa.Tarefa.class);
+                configuracao.addAnnotatedClass(br.senai.taskflow.modelo.entidade.usuario.Usuario.class);
+                configuracao.addAnnotatedClass(br.senai.taskflow.modelo.entidade.tarefa.Tarefa.class);
+                configuracao.addAnnotatedClass(br.senai.taskflow.modelo.entidade.tarefa.TipoTarefa.class);
 
-    // Método para obter a SessionFactory
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
+                configuracao.configure("hibernate.cfg.xml");
 
-    // Método para fechar a SessionFactory
-    public static void shutdown() {
-        // Fechar caches e pools de conexão
-        getSessionFactory().close();
+                ServiceRegistry servico = new StandardServiceRegistryBuilder().applySettings(configuracao.getProperties()).build();
+                return configuracao.buildSessionFactory(servico);
     }
 }
