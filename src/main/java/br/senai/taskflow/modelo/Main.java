@@ -1,73 +1,55 @@
 package br.senai.taskflow.modelo;
 
-import br.senai.taskflow.modelo.dao.Usuario.*;
-import br.senai.taskflow.modelo.dao.Desenvolvedor.*;
-import br.senai.taskflow.modelo.dao.TipoTarefa.*;
-import br.senai.taskflow.modelo.dao.Tarefa.*;
-import br.senai.taskflow.modelo.entidade.usuario.Usuario;
+import java.time.LocalDate;
+
+import br.senai.taskflow.modelo.dao.Desenvolvedor.DesenvolvedorDAOImpl;
+import br.senai.taskflow.modelo.dao.Tarefa.TarefaDAOImpl;
+import br.senai.taskflow.modelo.dao.Usuario.UsuarioDAOImpl;
 import br.senai.taskflow.modelo.entidade.desenvolvedor.Desenvolvedor;
 import br.senai.taskflow.modelo.entidade.tarefa.Tarefa;
 import br.senai.taskflow.modelo.entidade.tarefa.TipoTarefa;
-
-import java.util.List;
+import br.senai.taskflow.modelo.entidade.usuario.Usuario;
+import br.senai.taskflow.modelo.enumeracao.StatusTarefa.StatusTarefa;
 
 public class Main {
     public static void main(String[] args) {
-        // Testando Usuário
+        // Criando instâncias dos DAOs
         UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
-        
+        DesenvolvedorDAOImpl desenvolvedorDAO = new DesenvolvedorDAOImpl();
+        TarefaDAOImpl tarefaDAO = new TarefaDAOImpl();
+
+        // Cadastrando um usuário
         Usuario usuario = new Usuario();
         usuario.setNome("João");
         usuario.setEmail("joao@example.com");
+        usuario.setSenha("123");
         usuario.setAtivo(true);
         usuarioDAO.cadastrarUsuario(usuario);
+        System.out.println("Usuário cadastrado com sucesso!");
 
-        List<Usuario> usuarios = usuarioDAO.listarUsuarios();
-        System.out.println("Lista de Usuários:");
-        for (Usuario u : usuarios) {
-            System.out.println(u);
-        }
-
-        // Testando Desenvolvedor
-        DesenvolvedorDAOImpl desenvolvedorDAO = new DesenvolvedorDAOImpl();
-        
+        // Cadastrando um desenvolvedor
         Desenvolvedor desenvolvedor = new Desenvolvedor();
         desenvolvedor.setNome("Maria");
         desenvolvedor.setEmail("maria@example.com");
+        desenvolvedor.setMatricula("123456"); // Definindo matrícula
         desenvolvedorDAO.cadastrarDesenvolvedor(desenvolvedor);
+        System.out.println("Desenvolvedor cadastrado com sucesso!");
 
-        List<Desenvolvedor> desenvolvedores = desenvolvedorDAO.listarDesenvolvedores();
-        System.out.println("Lista de Desenvolvedores:");
-        for (Desenvolvedor d : desenvolvedores) {
-            System.out.println(d);
-        }
 
-        // Testando Tipo de Tarefa
-        TipoTarefaDAOImpl tipoTarefaDAO = new TipoTarefaDAOImpl();
-        
         TipoTarefa tipoTarefa = new TipoTarefa();
-        tipoTarefa.setDescricao("Desenvolvimento");
-        tipoTarefaDAO.cadastrarTipoTarefa(tipoTarefa);
-
-        List<TipoTarefa> tiposTarefa = tipoTarefaDAO.listarTiposTarefa();
-        System.out.println("Lista de Tipos de Tarefa:");
-        for (TipoTarefa tt : tiposTarefa) {
-            System.out.println(tt);
-        }
-
-        // Testando Tarefa
-        TarefaDAOImpl tarefaDAO = new TarefaDAOImpl();
+        tipoTarefa.setDescricao("Desenvolvimento"); 
         
         Tarefa tarefa = new Tarefa();
-        tarefa.setDescricao("Implementar nova funcionalidade");
-        tarefa.setDesenvolvedor(desenvolvedor); // associando ao desenvolvedor
-        tarefa.setTipoTarefa(tipoTarefa); // associando ao tipo de tarefa
-        tarefaDAO.cadastrarTarefa(tarefa);
+        tarefa.setTitulo("Implementar funcionalidade X");
+        tarefa.setDescricao("Descrever a funcionalidade X que deve ser implementada.");
+        tarefa.setStatus(StatusTarefa.EM_ANDAMENTO); // Definindo o status da tarefa
+        tarefa.setUsuario(usuario); // Atribuindo o usuário à tarefa
+        tarefa.setDesenvolvedor(desenvolvedor); // Atribuindo o desenvolvedor à tarefa
+        tarefa.setTipoTarefa(tipoTarefa); // Atribuindo o tipo de tarefa
+        tarefa.setDataCriacao(LocalDate.now()); // Definindo a data de criação
+        tarefa.setPrazo(LocalDate.now().plusDays(7)); // Definindo o prazo
 
-        List<Tarefa> tarefas = tarefaDAO.listarTarefas();
-        System.out.println("Lista de Tarefas:");
-        for (Tarefa t : tarefas) {
-            System.out.println(t);
-        }
+        tarefaDAO.cadastrarTarefa(tarefa); // Método de cadastro da tarefa
+        System.out.println("Tarefa cadastrada com sucesso!");
     }
 }

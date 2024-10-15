@@ -1,7 +1,7 @@
 package br.senai.taskflow.modelo.entidade.desenvolvedor;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,66 +10,80 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import br.senai.taskflow.modelo.entidade.tarefa.Tarefa;
 
 @Entity
 @Table(name = "desenvolvedores")
 public class Desenvolvedor {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(nullable = false)
-	private String nome;
-	
-	@Column(nullable = false, unique = true)
-	private String email;
+    @Column(nullable = false)
+    private String nome;
 
-	@Column(nullable = false, unique = true)
-	private String matricula;
+    @Column(nullable = false, unique = true)
+    private String email;
 
-	@OneToMany(mappedBy = "desenvolvedor", cascade = CascadeType.ALL)
-	private List<Tarefa> tarefas;
+    @Column(nullable = false, unique = true)
+    private String matricula;
 
-	public Long getId() {
-		return id;
-	}
+    @OneToMany(mappedBy = "desenvolvedor", cascade = CascadeType.ALL)
+    private List<Tarefa> tarefas;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getEmail() {
-		return email;
-	}
+    // Construtor padrão
+    public Desenvolvedor() {
+        this.tarefas = new ArrayList<>(); // Inicializa a lista no construtor padrão
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    // Construtor com todos os parâmetros
+    public Desenvolvedor(String nome, String email, String matricula) {
+        this.nome = nome;
+        this.email = email;
+        this.matricula = matricula;
+        this.tarefas = new ArrayList<>(); // Inicializa a lista
+    }
 
-	public String getNome() {
-		return nome;
-	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    // Getters e Setters
+    public Long getId() {
+        return id;
+    }
 
-	public String getMatricula() {
-		return matricula;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public List<Tarefa> getTarefas() {
-		return tarefas;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setTarefas(List<Tarefa> tarefas) {
-		this.tarefas = tarefas;
-	}
+    public String getNome() {
+        return nome;
+    }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public List<Tarefa> getTarefas() {
+        return tarefas;
+    }
+
+    public void setTarefas(List<Tarefa> tarefas) {
+        this.tarefas = tarefas;
+    }
 }

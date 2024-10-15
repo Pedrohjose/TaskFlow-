@@ -35,6 +35,18 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Tarefa> tarefas;
+    
+    public Usuario() {
+
+    }
+
+    public Usuario(String nome, String email, String senha, boolean ativo) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.ativo = ativo;
+    }
+
 
 	public Long getId() {
 		return id;

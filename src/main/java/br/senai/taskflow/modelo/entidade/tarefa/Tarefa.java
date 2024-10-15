@@ -1,7 +1,6 @@
 package br.senai.taskflow.modelo.entidade.tarefa;
 
 import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import br.senai.taskflow.modelo.entidade.desenvolvedor.Desenvolvedor;
 import br.senai.taskflow.modelo.entidade.usuario.Usuario;
 import br.senai.taskflow.modelo.enumeracao.StatusTarefa.StatusTarefa;
@@ -21,40 +19,60 @@ import br.senai.taskflow.modelo.enumeracao.StatusTarefa.StatusTarefa;
 @Table(name = "tarefas")
 public class Tarefa {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(nullable = false)
-    private String titulo;
+	@Column(nullable = false)
+	private String titulo;
 
-    @Column(nullable = false)
-    private String descricao;
+	@Column(nullable = false)
+	private String descricao;
 
-    @Enumerated(EnumType.STRING)
-    private StatusTarefa status;
+	@Enumerated(EnumType.STRING)
+	private StatusTarefa status;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario usuario;
+	@ManyToOne
+	@JoinColumn(name = "usuario_id", nullable = false)
+	private Usuario usuario;
 
-    @ManyToOne
-    @JoinColumn(name = "desenvolvedor_id", nullable = false)
-    private Desenvolvedor desenvolvedor;
+	@ManyToOne
+	@JoinColumn(name = "desenvolvedor_id", nullable = false)
+	private Desenvolvedor desenvolvedor;
 
-    @ManyToOne
-    @JoinColumn(name = "tipo_tarefa_id", nullable = false)
-    private TipoTarefa tipoTarefa;
+	@ManyToOne
+	@JoinColumn(name = "tipo_tarefa_id", nullable = false)
+	private TipoTarefa tipoTarefa;
 
-    @Column(nullable = false)
-    private LocalDate dataCriacao;
+	@Column(nullable = false)
+	private LocalDate dataCriacao;
 
-    @Column(nullable = false)
-    private LocalDate prazo;
+	@Column(nullable = false)
+	private LocalDate prazo;
 
-	
-    
-    public Long getId() {
+	// Construtor padrão
+	public Tarefa() {
+	}
+
+	// Construtor com todos os parâmetros
+	public Tarefa(String titulo, String descricao, StatusTarefa status, Usuario usuario, Desenvolvedor desenvolvedor,
+			TipoTarefa tipoTarefa, LocalDate dataCriacao, LocalDate prazo) {
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.status = status;
+		this.usuario = usuario;
+		this.desenvolvedor = desenvolvedor;
+		this.tipoTarefa = tipoTarefa;
+		this.dataCriacao = dataCriacao;
+		this.prazo = prazo;
+
+		// Adiciona o desenvolvedor à tarefa
+		if (desenvolvedor != null) {
+			desenvolvedor.adicionarTarefa(this); // Mantenha a relação bidirecional
+		}
+	}
+
+	public Long getId() {
 		return id;
 	}
 
@@ -98,10 +116,6 @@ public class Tarefa {
 		return desenvolvedor;
 	}
 
-	public void setDesenvolvedor(Desenvolvedor desenvolvedor) {
-		this.desenvolvedor = desenvolvedor;
-	}
-
 	public TipoTarefa getTipoTarefa() {
 		return tipoTarefa;
 	}
@@ -125,6 +139,4 @@ public class Tarefa {
 	public void setPrazo(LocalDate prazo) {
 		this.prazo = prazo;
 	}
-
-    
 }

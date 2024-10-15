@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-  "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
   
 <hibernate-configuration>
     <session-factory>
         <!-- Conexão com o Banco de Dados -->
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/taskflow</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/taskflow?serverTimezone=America/Sao_Paulo</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
 
@@ -25,6 +25,6 @@
         <mapping class="br.senai.taskflow.modelo.entidade.tarefa.Tarefa"/>
         <mapping class="br.senai.taskflow.modelo.entidade.tarefa.TipoTarefa"/>
         <mapping class="br.senai.taskflow.modelo.entidade.desenvolvedor.Desenvolvedor"/>
-        <mapping class="br.senai.taskflow.modelo.enumeracao.StatusTarefa"/>
+        <mapping class="br.senai.taskflow.modelo.enumeracao.StatusTarefa.StatusTarefa"/>
     </session-factory>
 </hibernate-configuration>
