@@ -1,13 +1,15 @@
 package br.senai.taskflow.modelo.dao.Desenvolvedor;
 
-import br.senai.taskflow.modelo.entidade.desenvolvedor.Desenvolvedor;
-import br.senai.taskflow.modelo.factory.ConexaoFactory;
-import org.hibernate.Session;
+import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.List;
+
+import org.hibernate.Session;
+
+import br.senai.taskflow.modelo.entidade.desenvolvedor.Desenvolvedor;
+import br.senai.taskflow.modelo.factory.ConexaoFactory;
 
 public class DesenvolvedorDAOImpl implements DesenvolvedorDAO {
 
@@ -48,19 +50,23 @@ public class DesenvolvedorDAOImpl implements DesenvolvedorDAO {
     }
 
     @Override
-    public void deletarDesenvolvedor(Desenvolvedor desenvolvedor) {
+    public void deletarDesenvolvedor(Long id) {
         Session sessao = null;
         try {
             sessao = fabrica.getConexao().openSession();
-            sessao.beginTransaction();
-            sessao.delete(desenvolvedor);
-            sessao.getTransaction().commit();  // Comitar a transação se tudo der certo
+            Desenvolvedor desenvolvedor = sessao.get(Desenvolvedor.class, id);
+            if (desenvolvedor != null) {
+                sessao.beginTransaction();
+                sessao.delete(desenvolvedor);
+                sessao.getTransaction().commit();
+            }
         } catch (Exception exception) {
-            erroSessao(sessao, exception);  // Tratar erro e realizar rollback
+            erroSessao(sessao, exception);
         } finally {
-            fecharSessao(sessao);  // Garantir que a sessão será fechada
+            fecharSessao(sessao);
         }
     }
+
 
     @Override
     public Desenvolvedor consultarDesenvolvedor(Long id) {
@@ -75,6 +81,21 @@ public class DesenvolvedorDAOImpl implements DesenvolvedorDAO {
             fecharSessao(sessao);  // Garantir que a sessão será fechada
         }
     }
+    public Desenvolvedor buscarPorEmail(String email) {
+        Session sessao = null;
+        try {
+            sessao = fabrica.getConexao().openSession();  // Abrir a sessão
+            return (Desenvolvedor) sessao.createQuery("FROM Desenvolvedor WHERE email = :email")
+                    .setParameter("email", email)
+                    .uniqueResult();  // Retornar o desenvolvedor encontrado
+        } catch (Exception exception) {
+            exception.printStackTrace();  // Tratar exceção
+            return null;
+        } finally {
+            fecharSessao(sessao);  // Fechar a sessão
+        }
+    }
+
 
     @Override
     public List<Desenvolvedor> listarDesenvolvedores() {

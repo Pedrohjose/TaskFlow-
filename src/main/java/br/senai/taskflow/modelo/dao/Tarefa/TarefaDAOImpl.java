@@ -48,13 +48,19 @@ public class TarefaDAOImpl implements TarefaDAO {
     }
 
     @Override
-    public void deletarTarefa(Tarefa tarefa) {
+    public void deletarTarefa(Long id) {
         Session sessao = null;
         try {
             sessao = fabrica.getConexao().openSession();
             sessao.beginTransaction();
-            sessao.delete(tarefa);
-            sessao.getTransaction().commit();  // Comitar a transação
+
+            // Buscar a tarefa pelo ID
+            Tarefa tarefa = sessao.get(Tarefa.class, id);
+            if (tarefa != null) {
+                sessao.delete(tarefa);  // Deletar a tarefa se encontrada
+            }
+
+            sessao.getTransaction().commit();  // Comitar a transação se tudo der certo
         } catch (Exception exception) {
             erroSessao(sessao, exception);  // Tratar erro e realizar rollback
         } finally {

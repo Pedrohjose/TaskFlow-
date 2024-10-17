@@ -86,4 +86,10 @@ public class Desenvolvedor {
     public void setTarefas(List<Tarefa> tarefas) {
         this.tarefas = tarefas;
     }
+    
+    public void adicionarTarefa(Tarefa tarefa) {
+        tarefa.setDesenvolvedor(this); 
+        this.tarefas.add(tarefa);    
+        }
+
 }

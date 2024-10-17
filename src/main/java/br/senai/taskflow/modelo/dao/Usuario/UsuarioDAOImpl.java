@@ -63,12 +63,18 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
     
     @Override
-    public void deletarUsuario(Usuario usuario) {
+    public void deletarUsuario(Long id) {
         Session sessao = null;
         try {
             sessao = fabrica.getConexao().openSession();
             sessao.beginTransaction();
-            sessao.delete(usuario);
+
+            // Buscar o usuário pelo ID
+            Usuario usuario = sessao.get(Usuario.class, id);
+            if (usuario != null) {
+                sessao.delete(usuario);  // Deletar o usuário se encontrado
+            }
+
             sessao.getTransaction().commit();  // Comitar a transação se tudo der certo
         } catch (Exception exception) {
             erroSessao(sessao, exception);  // Tratar erro e possivelmente realizar rollback
@@ -76,6 +82,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             fecharSessao(sessao);  // Garantir que a sessão será fechada
         }
     }
+
 
     @Override
     public Usuario consultarUsuario(Long id) {
