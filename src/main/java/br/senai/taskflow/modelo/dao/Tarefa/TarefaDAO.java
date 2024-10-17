@@ -6,7 +6,7 @@ import java.util.List;
 public interface TarefaDAO {
     void cadastrarTarefa(Tarefa tarefa);
     void alterarTarefa(Tarefa tarefa);
-    void deletarTarefa(Tarefa tarefa);
+    void deletarTarefa(Long id);
     Tarefa consultarTarefa(Long id);
     List<Tarefa> listarTarefas();
 }

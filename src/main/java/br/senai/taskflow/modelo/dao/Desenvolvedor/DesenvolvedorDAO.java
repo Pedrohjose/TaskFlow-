@@ -6,7 +6,7 @@ import java.util.List;
 public interface DesenvolvedorDAO {
     void cadastrarDesenvolvedor(Desenvolvedor desenvolvedor);
     void alterarDesenvolvedor(Desenvolvedor desenvolvedor);
-    void deletarDesenvolvedor(Desenvolvedor desenvolvedor);
+    void deletarDesenvolvedor(Long id);
     Desenvolvedor consultarDesenvolvedor(Long id);
     List<Desenvolvedor> listarDesenvolvedores();
 }

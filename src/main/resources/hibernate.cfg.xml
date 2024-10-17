@@ -6,7 +6,7 @@
     <session-factory>
         <!-- Conexão com o Banco de Dados -->
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/taskflow?serverTimezone=America/Sao_Paulo</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/taskflow?createDatabaseIfNotExist=true&amp;useTimezone=true&amp;serverTimezone=UTC</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
 
