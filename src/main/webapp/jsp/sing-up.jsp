@@ -18,7 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <title>Login | TaskFlow</title>
+    <title>Sign up | TaskFlow</title>
     <meta name="author" content="Enzo dos Santos Scholl" />
     <meta
       name="description"
@@ -28,10 +28,11 @@
   </head>
   <body>
     <div class="main-content">
-      <!-- Login -->
-      <div class="login-section">
-        <h1 aria-label="Login">Login</h1>
-        <form action="${pageContext.request.contextPath}/login" method="post">
+      <!-- Registro -->
+      <div class="register-section">
+        <h1 aria-label="Sign up">Sign up</h1>
+        <form action="${pageContext.request.contextPath}/usuario" method="post">
+          <input type="hidden" name="action" value="cadastrar" />
           <div class="form-group">
             <label for="username" aria-label="Usuário"
               >Usuário <span class="required">*</span></label
@@ -43,7 +44,7 @@
               maxlength="100"
               autocomplete="username"
               required
-              aria-label="Campo para inserir seu usuário"
+              aria-label="Campo para registrar seu usuário"
             />
           </div>
           <div class="form-group">
@@ -56,43 +57,75 @@
                 name="password"
                 id="password"
                 maxlength="100"
-                autocomplete="current-password"
+                autocomplete="new-password"
                 required
-                aria-label="Campo para inserir sua senha"
+                aria-label="Campo para registrar sua senha"
               />
               <span class="show-password" role="button"
                 ><img
-                  src="${pageContext.request.contextPath}/img/login/eye.svg"
+                  src="${pageContext.request.contextPath}/img/register/eye.svg"
                   alt="Botão para visualizar a senha"
               /></span>
             </div>
+          </div>
+          <div class="form-group">
+            <label for="confirm-password" aria-label="Confirmar senha"
+              >Confirmar senha <span class="required">*</span></label
+            >
+            <input
+              type="password"
+              name="confirm-password"
+              id="confirm-password"
+              maxlength="100"
+              autocomplete="new-password"
+              required
+              aria-label="Campo para confirmar sua senha"
+            />
+            <span
+              class="validation-error"
+              aria-label="Senhas não correspondem"
+              role="alert"
+              aria-hidden="true"
+              >Senhas não correspondem</span
+            >
+          </div>
+          <div id="dev-group" class="form-group">
+            <input
+              type="checkbox"
+              name="is-dev"
+              id="is-dev"
+              aria-label="Campo para confirmar seu papel"
+            />
+            <label for="is-dev" aria-label="Sou um desenvolvedor"
+              >Sou um desenvolvedor</label
+            >
           </div>
           <button
             type="submit"
             aria-label="Botão para enviar informações do formulário"
           >
-            Login
+            Sign up
           </button>
         </form>
-        <span aria-label="Seção de redirecionamento para criar uma conta"
-          >Não possui uma conta? <a href="${pageContext.request.contextPath}/sign-up.jsp">Sign up!</a></span
+        <span aria-label="Seção de redirecionamento para logar numa conta"
+          >Já possui uma conta? <a href="${pageContext.request.contextPath}/login.jsp">Login!</a></span
         >
       </div>
       <!-- Slides -->
       <div class="slides-section">
         <img
-          src="${pageContext.request.contextPath}/img/login/showcase.svg"
+          src="${pageContext.request.contextPath}/img/register/showcase.svg"
           alt="Imagem demonstrativa"
         />
-        <h2 aria-label="Organize seu tempo de maneira eficiente">
-          Organize seu tempo de maneira eficiente
+        <h2 aria-label="Mantenha suas atividades sempre em ordem!">
+          Mantenha suas atividades sempre em ordem!
         </h2>
         <p
-          aria-label="A TaskFlow facilita o gerenciamento de tarefas, permitindo que você foque nas atividades mais importantes e atinja suas metas de forma eficaz."
+          aria-label="A TaskFlow permite que você crie, organize e priorize suas tarefas de forma intuitiva, garantindo que nada fique fora do lugar. Acompanhe deadlines e mantenha o foco no que é mais importante."
         >
-          A TaskFlow facilita o gerenciamento de tarefas, permitindo que você
-          foque nas atividades mais importantes e atinja suas metas de forma
-          eficaz.
+          A TaskFlow permite que você crie, organize e priorize suas tarefas de
+          forma intuitiva, garantindo que nada fique fora do lugar. Acompanhe
+          deadlines e mantenha o foco no que é mais importante.
         </p>
         <div class="slides-controls">
           <span
