@@ -1,6 +1,7 @@
 package modelo.enumeracao.status;
 
-public enum Status {
+
+public enum StatusTarefa {
 	
 	PENDENTE,
 	EM_ANDAMENTO,
