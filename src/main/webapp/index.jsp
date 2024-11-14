@@ -21,6 +21,11 @@
                 <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
             </div>
             <button type="submit" class="button">Entrar</button>
+	<button type="submit" class="button">Entrar</button>
+	<a href="cadastrar-desenvolvedor" class="button">Cadastrar Desenvolvedor</a>
+	
+            
+            
             
             <%
         	UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
