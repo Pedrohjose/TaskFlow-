@@ -1,6 +1,5 @@
 package modelo.entidade.tarefa;
  
-import java.io.ObjectInputFilter.Status;
 //Tarefa (idTarefa*, nome, descrição, status, dt_criação, dt_prazo, dt_completação)
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -19,6 +18,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import modelo.entidade.desenvolvedor.Desenvolvedor;
+import modelo.enumeracao.status.StatusTarefa;
 
 @Entity
 @Table(name = "tarefa")
@@ -38,16 +38,8 @@ public class Tarefa implements Serializable{
 	private String descricao;
 	
 	@Enumerated(EnumType.STRING)
-	private Status status;
+	private StatusTarefa status;
 	
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
-	}
-
 	@Column(name = "dt_criacao", nullable = false)
 	private LocalDate dataCriacao;
 	
@@ -61,7 +53,13 @@ public class Tarefa implements Serializable{
     private Set<Desenvolvedor> desenvolvedores = new HashSet<>();
 
 	
-	
+	public StatusTarefa getStatus() { 
+        return status;
+    }
+
+    public void setStatus(StatusTarefa status) {
+        this.status = status;
+    }
 	public long getIdTarefa() {
 		return idTarefa;
 	}
