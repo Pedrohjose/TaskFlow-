@@ -162,6 +162,9 @@ section .header {
     text-align: center;
     font-size: 2.25rem;
     font-weight: 600;
+    background-color: #10b981;
+	padding: 10px; 
+	width: 100px;
 }
 
 .features {
@@ -212,7 +215,7 @@ section .header {
 }
 
 .features .card a:hover {
-    color: #1e40af;
+    color: rgb(0, 128, 0);
 }
 
 .sub-header {
@@ -283,8 +286,8 @@ section .header {
 }
 
 .pricing .card button:hover {
-    background-color: #1e40af;
-    border-color: #1e40af;
+    background-color: rgb(0, 128, 0);
+    border-color: rgb(0, 128, 0);
 }
 
 footer {
@@ -321,8 +324,8 @@ footer .column .socials a {
 
 footer .column .socials a:hover {
     color: #fff;
-    background-color: #1d4ed8;
-    border-color: #1d4ed8;
+    background-color: rgb(0, 128, 0);
+    border-color: rgb(0, 128, 0);
 }
 
 footer .column h4 {
@@ -340,7 +343,7 @@ footer .column > a {
 }
 
 footer .column > a:hover {
-    color: #1d4ed8;
+    color: rgb(0, 128, 0);
 }
 
 .copyright {
@@ -363,11 +366,6 @@ footer .column > a:hover {
     border-radius: 15px;
     background-color: #27272a;
     transition: all 0.3s ease;
-}
-
-.features button:hover {
-    background-color: #323232;
-    border-color: #fff;
 }
 
 #modal {
@@ -432,7 +430,7 @@ footer .column > a:hover {
 }
 
 .modal-content {
-    background-color: #27272a;
+    background-color: rgb(192, 192, 192);
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
