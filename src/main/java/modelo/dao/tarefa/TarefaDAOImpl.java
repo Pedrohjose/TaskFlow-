@@ -1,15 +1,22 @@
 package modelo.dao.tarefa;
 
+import java.io.FileOutputStream;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.apache.pdfbox.pdmodel.PDPage;
 import org.hibernate.Session;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import modelo.entidade.factory.ConexaoFactory;
 import modelo.entidade.tarefa.Tarefa;
+import modelo.entidade.tipotarefa.TipoTarefa;
 
 public class TarefaDAOImpl implements TarefaDAO{
 
@@ -77,6 +84,29 @@ public class TarefaDAOImpl implements TarefaDAO{
 			fecharSessao(sessao);
 		}
 	}
+	
+	public Tarefa recuperarTarefaPorIdUsaurio(Long id) {
+		Session sessao = null;
+		Tarefa tarefa = null;
+		
+			try {
+				sessao = abrirSessao(sessao);
+				
+				CriteriaBuilder contrutor = sessao.getCriteriaBuilder();
+				CriteriaQuery<Tarefa> criteria = contrutor.createQuery(Tarefa.class);
+				Root<Tarefa> raizDesenvolvedor = criteria.from(Tarefa.class);
+				criteria.select(raizDesenvolvedor).where(contrutor.equal(raizDesenvolvedor.get("idTarefa"), id));
+				
+				tarefa = sessao.createQuery(criteria).getSingleResult();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				fecharSessao(sessao);
+			}
+			
+			return tarefa;
+			
+	}
 
 	public List<Tarefa> recuperarTarefas() {
 		Session sessao = null;
@@ -96,4 +126,6 @@ public class TarefaDAOImpl implements TarefaDAO{
 		}
 		return tarefas;
 	}
+	
+	
 }

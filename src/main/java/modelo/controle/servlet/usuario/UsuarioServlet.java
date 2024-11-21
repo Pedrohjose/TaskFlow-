@@ -12,8 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import modelo.dao.desenvolvedor.DesenvolvedorDAO;
+import modelo.dao.desenvolvedor.DesenvolvedorDAOImpl;
 import modelo.dao.usuario.UsuarioDAO;
 import modelo.dao.usuario.UsuarioDAOImpl;
+import modelo.entidade.desenvolvedor.Desenvolvedor;
 import modelo.entidade.usuario.Usuario;
 
 @WebServlet(urlPatterns = {"/logar-usuario", "/redefinir-senha", "/desbloquear-usuario"})
@@ -21,9 +24,11 @@ public class UsuarioServlet extends HttpServlet implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private UsuarioDAO daoUsuario;
+	private DesenvolvedorDAO daoDesenvolvedor;
 
 	public void init() {
 		daoUsuario = new UsuarioDAOImpl();
+		daoDesenvolvedor = new DesenvolvedorDAOImpl();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -95,6 +100,11 @@ public class UsuarioServlet extends HttpServlet implements Serializable {
 				usuario.setTentativas(0);
 				daoUsuario.atualizarUsuario(usuario);
 				
+				Desenvolvedor desenvolvedor = daoDesenvolvedor.recuperarDesenvolvedorPorIdUsaurio(usuario.getIdUsuario());
+				
+				session.setAttribute("usuario", usuario);
+				session.setAttribute("desenvolvedor", desenvolvedor);
+				
 				if (usuarios.isAdministrador()) {
 					RequestDispatcher dispatcher = request.getRequestDispatcher("paginas/administrador/home-adm.jsp");
 					dispatcher.forward(request, response);
@@ -133,10 +143,16 @@ public class UsuarioServlet extends HttpServlet implements Serializable {
 		
 		for (Usuario usuario : daoUsuario.recuperarUsuarios()) {
 			if (usuario.getEmail().equals(emailSessao)) {
-				usuario.setSenha(request.getParameter("novaSenha"));
+				usuario.setSenha(request.getParameter("senha"));
 				usuario.setBloqueado(false);
 				usuario.setTentativas(0);
 				daoUsuario.atualizarUsuario(usuario);
+				
+				if(usuario.isInativo()) {
+					RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+					dispatcher.forward(request, response);
+					return;
+				}
 				
 				if (usuario.isAdministrador()) {
 					RequestDispatcher dispatcher = request.getRequestDispatcher("paginas/administrador/home-adm.jsp");

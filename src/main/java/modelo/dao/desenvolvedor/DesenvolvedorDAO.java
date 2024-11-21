@@ -6,11 +6,13 @@ import modelo.entidade.desenvolvedor.Desenvolvedor;
 
 public interface DesenvolvedorDAO {
 
-	void inserirDesenvolvedor(Desenvolvedor desenvolvedor);
+	boolean inserirDesenvolvedor(Desenvolvedor desenvolvedor);
 
-	void deletarDesenvolvedor(Desenvolvedor desenvolvedor);
+	boolean deletarDesenvolvedor(Desenvolvedor desenvolvedor);
 
-	void atualizarDesenvolvedor(Desenvolvedor desenvolvedor);
+	boolean atualizarDesenvolvedor(Desenvolvedor desenvolvedor);
+	
+	Desenvolvedor recuperarDesenvolvedorPorIdUsaurio(Long id);
 
 	List<Desenvolvedor> recuperarDesenvolvedores();
 

@@ -1,15 +1,18 @@
 package modelo.dao.desenvolvedor;
 
-import modelo.entidade.factory.ConexaoFactory;
-import modelo.entidade.desenvolvedor.Desenvolvedor;
-
-import org.hibernate.Session;
+import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Root;
 
-import java.util.List;
+import org.hibernate.Session;
+
+import javassist.tools.framedump;
+import modelo.entidade.desenvolvedor.Desenvolvedor;
+import modelo.entidade.factory.ConexaoFactory;
+import modelo.entidade.usuario.Usuario;
 
 public class DesenvolvedorDAOImpl implements DesenvolvedorDAO {
 
@@ -38,7 +41,7 @@ public class DesenvolvedorDAOImpl implements DesenvolvedorDAO {
 		return sessao;
 	}
 
-	public void inserirDesenvolvedor(Desenvolvedor desenvolvedor) {
+	public boolean inserirDesenvolvedor(Desenvolvedor desenvolvedor) {
 		Session sessao = null;
 		try {
 			sessao = abrirSessao(sessao);
@@ -47,12 +50,14 @@ public class DesenvolvedorDAOImpl implements DesenvolvedorDAO {
 
 		} catch (Exception exception) {
 			erroSessao(sessao, exception);
+			return false;
 		} finally {
 			fecharSessao(sessao);
 		}
+		return true;
 	}
 
-	public void deletarDesenvolvedor(Desenvolvedor desenvolvedor) {
+	public boolean deletarDesenvolvedor(Desenvolvedor desenvolvedor) {
 		Session sessao = null;
 		try {
 			sessao = abrirSessao(sessao);
@@ -60,12 +65,15 @@ public class DesenvolvedorDAOImpl implements DesenvolvedorDAO {
 			sessao.getTransaction().commit();
 		} catch (Exception exception) {
 			erroSessao(sessao, exception);
+			return false;
 		} finally {
 			fecharSessao(sessao);
 		}
+		return true;
 	}
+	
 
-	public void atualizarDesenvolvedor(Desenvolvedor desenvolvedor) {
+	public boolean atualizarDesenvolvedor(Desenvolvedor desenvolvedor) {
 		Session sessao = null;
 		try {
 			sessao = abrirSessao(sessao);
@@ -73,9 +81,37 @@ public class DesenvolvedorDAOImpl implements DesenvolvedorDAO {
 			sessao.getTransaction().commit();
 		} catch (Exception exception) {
 			erroSessao(sessao, exception);
+			return false;
 		} finally {
 			fecharSessao(sessao);
 		}
+		
+		return true;
+	}
+	
+	public Desenvolvedor recuperarDesenvolvedorPorIdUsaurio(Long id) {
+		Session sessao = null;
+		Desenvolvedor desevolvedor = null;
+		
+			try {
+				sessao = abrirSessao(sessao);
+				
+				CriteriaBuilder contrutor = sessao.getCriteriaBuilder();
+				CriteriaQuery<Desenvolvedor> criteria = contrutor.createQuery(Desenvolvedor.class);
+				Root<Desenvolvedor> raizDesenvolvedor = criteria.from(Desenvolvedor.class);
+				Join<Desenvolvedor, Usuario> join = raizDesenvolvedor.join("usuario");
+				
+				criteria.select(raizDesenvolvedor).where(contrutor.equal(raizDesenvolvedor.get("usuario"), id));
+				
+				desevolvedor = sessao.createQuery(criteria).getSingleResult();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				fecharSessao(sessao);
+			}
+			
+			return desevolvedor;
+			
 	}
 
 	public List<Desenvolvedor> recuperarDesenvolvedores() {

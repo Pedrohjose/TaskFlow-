@@ -119,4 +119,24 @@ body {
     text-decoration: underline;
 }
 
+/* Estilo para o select */
+.input-field select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    transition: border-color 0.3s;
+    appearance: none;
+}
+
+/* Efeito de foco para o select */
+.input-field select:focus {
+    border-color: #3a3af4;
+    outline: none;
+}
+
+
 

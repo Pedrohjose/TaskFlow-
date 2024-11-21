@@ -16,6 +16,12 @@
   	<description></description>
   	<servlet-class>modelo.controle.servlet.usuario.UsuarioServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>TarefaServlet</servlet-name>
+  	<display-name>TarefaServlet</display-name>
+  	<description></description>
+  	<servlet-class>modelo.controle.servlet.tarefa.TarefaServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>DesenvolvedorServlet</servlet-name>
   	<url-pattern>/DesenvolvedorServlet</url-pattern>
@@ -23,5 +29,9 @@
   <servlet-mapping>
   	<servlet-name>UsuarioServlet</servlet-name>
   	<url-pattern>/UsuarioServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>TarefaServlet</servlet-name>
+  	<url-pattern>/TarefaServlet</url-pattern>
   </servlet-mapping>
 </web-app>

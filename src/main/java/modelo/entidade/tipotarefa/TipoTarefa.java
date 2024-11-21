@@ -41,6 +41,14 @@ public class TipoTarefa implements Serializable{
 	private Categoria categoria;
 
 	
+	public long getIdTipoTarefa() {
+		return idTipoTarefa;
+	}
+
+	public void setIdTipoTarefa(long idTipoTarefa) {
+		this.idTipoTarefa = idTipoTarefa;
+	}
+
 	public Tarefa getTarefa() {
 		return tarefa;
 	}

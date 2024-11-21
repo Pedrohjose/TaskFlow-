@@ -77,6 +77,29 @@ public class TipoTarefaDAOImpl implements TipoTarefaDAO{
 			fecharSessao(sessao);
 		}
 	}
+	
+	public TipoTarefa recuperarTipoTarefaPorIdUsaurio(Long id) {
+		Session sessao = null;
+		TipoTarefa tipoTarefa = null;
+		
+			try {
+				sessao = abrirSessao(sessao);
+				
+				CriteriaBuilder contrutor = sessao.getCriteriaBuilder();
+				CriteriaQuery<TipoTarefa> criteria = contrutor.createQuery(TipoTarefa.class);
+				Root<TipoTarefa> raizDesenvolvedor = criteria.from(TipoTarefa.class);
+				criteria.select(raizDesenvolvedor).where(contrutor.equal(raizDesenvolvedor.get("idTipoTarefa"), id));
+				
+				tipoTarefa = sessao.createQuery(criteria).getSingleResult();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				fecharSessao(sessao);
+			}
+			
+			return tipoTarefa;
+			
+	}
 
 	public List<TipoTarefa> recuperarTipoTarefas() {
 		Session sessao = null;
@@ -96,4 +119,6 @@ public class TipoTarefaDAOImpl implements TipoTarefaDAO{
 		}
 		return tipoTarefas;
 	}
+	
+
 }

@@ -1,39 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Usuário</title>
-    <link rel="stylesheet" href="<%= request.getContextPath()%>/resources/estilos/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastro de Usuário</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/estilos/login.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Cadastro de Usuário</h2>
-        <form action="inserir-desenvolvedor" method="post">
-            <label for="nome">Nome do Usuário:</label>
-            <input type="text" id="nome" name="nome" required>
-
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" required>
-
-            <label for="cpf">CPF:</label>
-            <input type="text" id="cpf" name="cpf" required maxlength="14" placeholder="000.000.000-00">
-
-            <label for="funcao">Função:</label>
-            <select id="funcao" name="funcao" required>
-                <option value="BACK_END">Back-End</option>
-                <option value="FRONT_END">Front-End</option>
-                <option value="BANCO_DE_DADOS">Banco de Dados</option>
-                <option value="FULL_STACK">Full Stack</option>
-            </select>
-
-            <button type="submit">Cadastrar</button>
-        </form>
-    </div>
+	<div class="login-container">
+		<h2>Cadastro de Usuário</h2>
+		<form id="form-cadastro" action="inserir-desenvolvedor" method="post">
+			<div class="input-field">
+				<input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+			</div>
+			<div class="input-field">
+				<input type="email" id="email" name="email" placeholder="Digite seu email" required>
+			</div>
+			<div class="input-field">
+				<input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+			</div>
+			<div class="input-field">
+				<input type="password" id="senha-confirm" name="senha-confirm" placeholder="Confirme sua senha" required>
+			</div>
+			<div class="input-field">
+				<input type="text" id="cpf" name="cpf" required maxlength="14" placeholder="000.000.000-00">
+			</div>
+			<div class="input-field">
+				<label for="funcao">Função:</label>
+				<select id="funcao" name="funcao" required>
+					<option value="BACK_END">Back-End</option>
+					<option value="FRONT_END">Front-End</option>
+					<option value="BANCO_DE_DADOS">Banco de Dados</option>
+					<option value="FULL_STACK">Full Stack</option>
+				</select>
+			</div>
+			<button type="submit" class="button">Cadastrar</button>
+		</form>
+	</div>
+<script src="<%=request.getContextPath()%>/resources/scripts/login.js">
+</script>
 </body>
 </html>

@@ -3,6 +3,7 @@ package modelo.dao.tarefa;
 import java.util.List;
 
 import modelo.entidade.tarefa.Tarefa;
+import modelo.entidade.tipotarefa.TipoTarefa;
 
 public interface TarefaDAO {
 
@@ -11,6 +12,8 @@ public interface TarefaDAO {
 	void deletarTarefa(Tarefa tarefa);
 
 	void atualizarTarefa(Tarefa tarefa);
+	
+	Tarefa recuperarTarefaPorIdUsaurio(Long id);
 
 	List<Tarefa> recuperarTarefas();
 
