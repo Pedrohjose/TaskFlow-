@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif; /* Alterado para uma fonte mais moderna */
 }
 
 body {
@@ -10,22 +10,22 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #f0f2f5;
+    background-color: #e8f1f5; /* Fundo suave em azul claro */
 }
 
 .container {
     width: 100%;
     max-width: 400px;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 10px; /* Bordas mais arredondadas */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra mais sutil */
 }
 
 h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #333;
+    color: #2c3e50; /* Azul escuro moderno */
 }
 
 form {
@@ -36,38 +36,59 @@ form {
 label {
     margin-bottom: 8px;
     font-weight: bold;
-    color: #555;
+    color: #34495e; /* Cor de texto mais sofisticada */
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"],
 select {
-    padding: 10px;
+    padding: 12px; /* Aumentado para melhor usabilidade */
     margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #bdc3c7; /* Cinza claro nas bordas */
+    border-radius: 8px; /* Bordas mais suaves */
     font-size: 16px;
+    background-color: #f7f9fb; /* Fundo levemente colorido */
+    color: #2c3e50; /* Texto azul escuro */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input:focus,
 select:focus {
-    border-color: #007bff;
+    border-color: #2980b9; /* Azul forte ao focar */
     outline: none;
+    box-shadow: 0 0 8px rgba(41, 128, 185, 0.5); /* Sombra azul ao focar */
 }
 
 button {
     padding: 12px;
-    background-color: #007bff;
+    background-color: #3498db; /* Azul vibrante */
     border: none;
-    border-radius: 5px;
-    color: #fff;
+    border-radius: 8px;
+    color: #ffffff;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #1f78b4; /* Azul mais escuro no hover */
+    transform: scale(1.02); /* Leve efeito de zoom */
+}
+
+/* Feedback visual ao clicar */
+button:active {
+    transform: scale(0.98);
+}
+
+/* Ajustes para dispositivos pequenos */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    button {
+        font-size: 14px;
+    }
 }

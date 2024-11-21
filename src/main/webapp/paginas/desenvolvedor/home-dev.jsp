@@ -25,7 +25,7 @@
 			<a
 				href="<%=request.getContextPath()%>/paginas/desenvolvedor/home-dev.jsp">
 				<img
-				src="<%=request.getContextPath() %>/resources/imagens/home/logo.png">
+				src="<%=request.getContextPath() %>/resources/imagens/home/logohome1.png" class="logo-img" alt="Logotipo SoftLeve">
 			</a>
 		</div>
 
@@ -133,7 +133,7 @@
         		}
         	%>
 		</div>
-	</section>
+	</section>x
 	<div id="modal" class="modal-overlay" onclick="closeModal(event)">
 		<div class="modal-content" onclick="event.stopPropagation()">
 			<div id="modal-body"></div>

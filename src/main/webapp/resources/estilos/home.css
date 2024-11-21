@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-*{
+* {
     padding: 0;
     margin: 0;
     outline: none;
@@ -9,21 +9,21 @@
     box-sizing: border-box;
 }
 
-img{
+img {
     width: 100%;
     display: flex;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-body{
+body {
     font-family: 'Poppins', sans-serif;
-    background-color: #18181B;
+    background-color: #f3f4f6; /* Alterado para um tom claro */
 }
 
-nav{
+nav {
     max-width: 1200px;
     margin: auto;
     padding: 2rem 1rem;
@@ -33,65 +33,65 @@ nav{
     gap: 2rem;
 }
 
-.nav-logo{
+.nav-logo {
     max-width: 100px;
 }
 
-.nav-links{
+.nav-links {
     list-style: none;
     display: flex;
     align-items: center;
     gap: 3rem;
 }
 
-.link a{
+.link a {
     position: relative;
     padding-bottom: 0.75rem;
-    color: #fff;
+    color: #374151; /* Tom escuro neutro */
 }
 
-.link a::after{
+.link a::after {
     content: "";
     position: absolute;
     height: 2px;
     width: 0;
     bottom: 0;
     left: 0;
-    background-color: #1d4ed8;
+    background-color: #10b981; /* Verde vibrante */
     transition: all 0.3s ease;
 }
 
-.link a:hover::after{
+.link a:hover::after {
     width: 70%;
 }
 
-.btn{
+.btn {
     padding: 1rem 2rem;
     font-size: 1rem;
     color: #fff;
-    background-color: #1d4ed8;
+    background-color: #10b981; /* Botão verde vibrante */
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.btn:hover{
-    background-color: #1e40af;
+.btn:hover {
+    background-color: #047857; /* Verde escuro no hover */
 }
 
-.container{
+.container {
     max-width: 1200px;
     margin: auto;
     padding: 5rem 2rem;
 }
 
-.blur{
+.blur {
     position: absolute;
-    box-shadow: 0 0 1000px 50px #1d4ed8;
+    box-shadow: 0 0 1000px 50px #10b981; /* Tom atualizado */
     z-index: -100;
 }
 
-header{
+header {
     position: relative;
     padding-top: 2rem;
     display: grid;
@@ -100,36 +100,36 @@ header{
     gap: 2rem;
 }
 
-header .content h4{
+header .content h4 {
     margin-bottom: 1rem;
-    color: #ccc;
+    color: #6b7280; /* Cinza moderno */
     font-size: 1rem;
     font-weight: 600;
 }
 
-header .content h1{
-    color: #fff;
+header .content h1 {
+    color: #1f2937; /* Preto suave */
     margin-bottom: 1rem;
     font-size: 3rem;
     font-weight: 700;
     line-height: 4rem;
 }
 
-header .content h1 span{
+header .content h1 span {
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px #fff;
+    -webkit-text-stroke: 1px #10b981; /* Verde vibrante */
 }
 
-header .content p{
+header .content p {
     margin-bottom: 2rem;
-    color: #ccc;
+    color: #6b7280;
 }
 
-header .image{
+header .image {
     position: relative;
 }
 
-header .image::before{
+header .image::before {
     content: "o";
     position: absolute;
     top: 0;
@@ -138,42 +138,41 @@ header .image::before{
     font-size: 38rem;
     font-weight: 400;
     line-height: 20rem;
-    color: #1d4ed8;
-    opacity: 0.2;
+    color: #10b981;
+    opacity: 0.1;
     z-index: -100;
 }
 
-header .image img{
+header .image img {
     max-width: 600px;
     margin: auto;
 }
 
-section button{
+section button {
     all: unset;
 }
 
-section button:hover{
+section button:hover {
     cursor: pointer;
 }
 
-
-section .header{
+section .header {
     margin-bottom: 1rem;
-    color: #fff;
+    color: #1f2937; /* Preto suave */
     text-align: center;
     font-size: 2.25rem;
     font-weight: 600;
 }
 
-.features{
+.features {
     margin-top: 4rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
 }
 
-.features .card{
-    background-color: #27272a;
+.features .card {
+    background-color: #e5e7eb; /* Fundo claro */
     padding: 1rem;
     border: 2px solid transparent;
     border-radius: 15px;
@@ -181,59 +180,58 @@ section .header{
     transition: all 0.3s ease;
 }
 
-.features .card:hover{
-    background-color: #323232;
-    border-color: #fff;
+.features .card:hover {
+    background-color: #f3f4f6;
+    border-color: #10b981; /* Verde */
 }
 
-.features .card span{
+.features .card span {
     display: inline-block;
-    background-color: #1e40af;
+    background-color: #047857; /* Verde escuro */
     padding: 2px 9px;
     margin-bottom: 1rem;
     font-size: 1.75rem;
     color: #fff;
     border-radius: 5px;
 }
-
-.features .card h4{
+.features .card h4 {
     margin-bottom: 0.5rem;
     color: #fff;
     font-size: 1.2rem;
     font-weight: 600;
 }
 
-.features .card p{
+.features .card p {
     color: #ccc;
     margin-bottom: 1rem;
 }
 
-.features .card a{
+.features .card a {
     color: #fff;
     transition: all 0.3s ease;
 }
 
-.features .card a:hover{
+.features .card a:hover {
     color: #1e40af;
 }
 
-.sub-header{
+.sub-header {
     max-width: 600px;
     margin: auto;
     text-align: center;
     color: #ccc;
 }
 
-.pricing{
+.pricing {
     margin-top: 4rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
 
-.pricing .card{
+.pricing .card {
     padding: 3rem 2rem;
-    background-color: #27272a;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     border: 2px solid transparent;
@@ -241,24 +239,24 @@ section .header{
     transition: all 0.3s ease;
 }
 
-.pricing .card:hover{
+.pricing .card:hover {
     background-color: #323232;
     border-color: #fff;
 }
 
-.pricing .card .content{
+.pricing .card .content {
     flex: 1;
     margin-bottom: 2rem;
 }
 
-.pricing .card h4{
+.pricing .card h4 {
     margin-bottom: 1rem;
     color: #fff;
     font-size: 1.2rem;
     font-weight: 500;
 }
 
-.pricing .card h3{
+.pricing .card h3 {
     color: #fff;
     padding-bottom: 1rem;
     margin-bottom: 2rem;
@@ -267,52 +265,52 @@ section .header{
     border-bottom: 2px dashed #fff;
 }
 
-.pricing .card p{
+.pricing .card p {
     color: #fff;
     margin-bottom: 0.75rem;
 }
 
-.pricing .card p i{
+.pricing .card p i {
     color: #ccc;
     font-size: 1.2rem;
     margin-right: 0.3rem;
 }
 
-.pricing .card button{
+.pricing .card button {
     color: #fff;
     background-color: transparent;
     border: 2px solid #fff;
 }
 
-.pricing .card button:hover{
+.pricing .card button:hover {
     background-color: #1e40af;
     border-color: #1e40af;
 }
 
-footer{
+footer {
     position: relative;
     display: grid;
     grid-template-columns: 400px repeat(3, 1fr);
     gap: 2rem;
 }
 
-footer .column .logo{
+footer .column .logo {
     max-width: 100px;
     margin-bottom: 2rem;
 }
 
-footer .column p{
+footer .column p {
     color: #ccc;
     margin-bottom: 2rem;
 }
 
-footer .column .socials{
+footer .column .socials {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-footer .column .socials a{
+footer .column .socials a {
     color: #ccc;
     border: 1px solid #ccc;
     padding: 5px 10px;
@@ -321,31 +319,31 @@ footer .column .socials a{
     transition: all 0.3s ease;
 }
 
-footer .column .socials a:hover{
+footer .column .socials a:hover {
     color: #fff;
     background-color: #1d4ed8;
     border-color: #1d4ed8;
 }
 
-footer .column h4{
+footer .column h4 {
     color: #fff;
     margin-bottom: 2rem;
     font-size: 1.2rem;
     font-weight: 500;
 }
 
-footer .column > a{
+footer .column > a {
     display: block;
     color: #ccc;
     margin-bottom: 1rem;
     transition: all 0.3s ease;
 }
 
-footer .column > a:hover{
+footer .column > a:hover {
     color: #1d4ed8;
 }
 
-.copyright{
+.copyright {
     max-width: 1200px;
     margin: auto;
     padding: 1rem;
@@ -354,17 +352,11 @@ footer .column > a:hover{
     text-align: center;
 }
 
-.features button{
-    background-color: transparent;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-}
-
 .features button {
-    all: unset; /* Remove todos os estilos padrão do navegador */
-    display: block; /* Permite que os elementos internos usem layout padrão */
-    text-align: left; /* Ajusta o alinhamento do texto */
-    cursor: pointer; /* Garante o estilo correto do cursor */
+    all: unset;
+    display: block;
+    text-align: left;
+    cursor: pointer;
 }
 
 .features button .card {
@@ -385,56 +377,60 @@ footer .column > a:hover{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+    background: rgb(255, 255, 255);
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Certifique-se de que o modal fica acima de outros elementos */
+    z-index: 1000;
 }
 
 .modal-content {
-    background: white; /* Cor de fundo do conteúdo do modal */
+    background: white;
     padding: 20px;
     border-radius: 8px;
-    max-width: 90%; /* Garante que não ultrapasse a largura da tela */
-    max-height: 90%; /* Garante que não ultrapasse a altura da tela */
-    overflow-y: auto; /* Habilita rolagem se o conteúdo for maior que a altura */
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
 }
 
-
-@media (width < 900px){
-    .nav-links{
+@media (max-width: 900px) {
+    .nav-links {
         display: none;
     }
-    header{
+
+    header {
         grid-template-columns: repeat(1, 1fr);
     }
-    header .image{
+
+    header .image {
         grid-area: 1/1/2/2;
     }
-    .features{
+
+    .features {
         grid-template-columns: repeat(2, 1fr);
     }
-    .pricing{
+
+    .pricing {
         grid-template-columns: repeat(2, 1fr);
     }
-    footer{
+
+    footer {
         grid-template-columns: 1fr 200px;
     }
 }
+
 .modal {
-    display: none; /* Escondido por padrão */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Fundo com transparência */
+    background-color: rgba(0, 0, 0, 0.8);
     z-index: 1000;
     justify-content: center;
     align-items: center;
 }
 
-/* Conteúdo da Modal */
 .modal-content {
     background-color: #27272a;
     padding: 2rem;
@@ -447,7 +443,6 @@ footer .column > a:hover{
     animation: fadeIn 0.3s ease;
 }
 
-/* Botão de Fechar */
 .close {
     position: absolute;
     top: 1rem;
@@ -456,8 +451,11 @@ footer .column > a:hover{
     color: #fff;
     cursor: pointer;
 }
+.logo-img {
+    width: 150px;
+    height: auto;
+}
 
-/* Animação de Fade In */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -469,20 +467,21 @@ footer .column > a:hover{
     }
 }
 
-@media (width < 600px){
-    header .image::before{
+@media (max-width: 600px) {
+    header .image::before {
         display: none;
     }
 
-    .features{
+    .features {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .pricing{
+    .pricing {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    footer{
+    footer {
         grid-template-columns: 1fr 150px;
     }
+    
 }
