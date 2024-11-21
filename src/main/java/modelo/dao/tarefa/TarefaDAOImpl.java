@@ -1,22 +1,19 @@
 package modelo.dao.tarefa;
 
-import java.io.FileOutputStream;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.apache.pdfbox.pdmodel.PDPage;
 import org.hibernate.Session;
-
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
 
 import modelo.entidade.factory.ConexaoFactory;
 import modelo.entidade.tarefa.Tarefa;
-import modelo.entidade.tipotarefa.TipoTarefa;
 
 public class TarefaDAOImpl implements TarefaDAO{
 
@@ -126,6 +123,5 @@ public class TarefaDAOImpl implements TarefaDAO{
 		}
 		return tarefas;
 	}
-	
-	
+
 }

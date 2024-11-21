@@ -16,5 +16,5 @@ public interface TarefaDAO {
 	Tarefa recuperarTarefaPorIdUsaurio(Long id);
 
 	List<Tarefa> recuperarTarefas();
-
+	
 }

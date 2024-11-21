@@ -19,154 +19,164 @@ import modelo.dao.usuario.UsuarioDAOImpl;
 import modelo.entidade.desenvolvedor.Desenvolvedor;
 import modelo.entidade.usuario.Usuario;
 
-@WebServlet(urlPatterns = {"/logar-usuario", "/redefinir-senha", "/desbloquear-usuario"})
+@WebServlet(urlPatterns = {"/logar-usuario", "/redefinir-senha", "/desbloquear-usuario", "/logout"})
 public class UsuarioServlet extends HttpServlet implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private UsuarioDAO daoUsuario;
-	private DesenvolvedorDAO daoDesenvolvedor;
+    private static final long serialVersionUID = 1L;
+    private UsuarioDAO daoUsuario;
+    private DesenvolvedorDAO daoDesenvolvedor;
 
-	public void init() {
-		daoUsuario = new UsuarioDAOImpl();
-		daoDesenvolvedor = new DesenvolvedorDAOImpl();
-	}
+    public void init() {
+        daoUsuario = new UsuarioDAOImpl();
+        daoDesenvolvedor = new DesenvolvedorDAOImpl();
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-		String action = request.getServletPath();
+        String action = request.getServletPath();
 
-		try {
+        try {
+            switch (action) {
 
-			switch (action) {
+                case "/logar-usuario":
+                    logarUsuario(request, response);
+                    break;
 
-			case "/logar-usuario":
-				logarUsuario(request, response);
-				break;
+                case "/redefinir-senha":
+                    mostrarResetarSenha(request, response);
+                    break;
 
-			case "/redefinir-senha":
-				mostrarResetarSenha(request, response);
-				break;
-				
-			case "/desbloquear-usuario":
-				desbloquearUsuario(request, response);
-				break;
-				
-			default:
-				retornarMenu(request, response);
-				break;
-			}
-		} catch (SQLException ex) {
-			throw new ServletException(ex);
-		}
-	}
+                case "/desbloquear-usuario":
+                    desbloquearUsuario(request, response);
+                    break;
 
-	private void retornarMenu(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+                case "/logout":
+                    logoutUsuario(request, response);
+                    break;
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-		dispatcher.forward(request, response);
-	}
+                default:
+                    retornarMenu(request, response);
+                    break;
+            }
+        } catch (SQLException ex) {
+            throw new ServletException(ex);
+        }
+    }
 
-	private void mostrarResetarSenha(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    private void retornarMenu(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("paginas/desenvolvedor/resetar-senha-desenvolvedor.jsp");
-		dispatcher.forward(request, response);
-	}
-	
-	private void logarUsuario(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        dispatcher.forward(request, response);
+    }
 
-		HttpSession session = request.getSession();
-		String email = request.getParameter("email");
-		String senha = request.getParameter("senha");
-		session.setAttribute("emailSessao", email);
+    private void mostrarResetarSenha(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-		for (Usuario usuarios : daoUsuario.recuperarUsuarios()) {
-			if (usuarios.getEmail().equals(email) && usuarios.getSenha().equals(senha)) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("paginas/desenvolvedor/resetar-senha-desenvolvedor.jsp");
+        dispatcher.forward(request, response);
+    }
 
-				if (usuarios.isBloqueado() || usuarios.isInativo()) {
-					System.out.println("Usuario Não pode Acessar o Sistema");
-					break;
-				}
+    private void logarUsuario(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, ServletException, IOException {
 
-				Usuario usuario = usuarios;
-				usuario.setTentativas(0);
-				daoUsuario.atualizarUsuario(usuario);
-				
-				Desenvolvedor desenvolvedor = daoDesenvolvedor.recuperarDesenvolvedorPorIdUsaurio(usuario.getIdUsuario());
-				
-				session.setAttribute("usuario", usuario);
-				session.setAttribute("desenvolvedor", desenvolvedor);
-				
-				if (usuarios.isAdministrador()) {
-					RequestDispatcher dispatcher = request.getRequestDispatcher("paginas/administrador/home-adm.jsp");
-					dispatcher.forward(request, response);
-					return;
-				} else {
-					RequestDispatcher dispatcher = request.getRequestDispatcher("paginas/desenvolvedor/home-dev.jsp");
-					dispatcher.forward(request, response);
-					return;
-				}
-			}else if (usuarios.getEmail().equals(email)) {
+        HttpSession session = request.getSession();
+        String email = request.getParameter("email");
+        String senha = request.getParameter("senha");
+        session.setAttribute("emailSessao", email);
 
-				
-				Usuario usuario = new Usuario();
-				usuario = usuarios;
-				usuario.setTentativas(usuarios.getTentativas() + 1);
+        for (Usuario usuarios : daoUsuario.recuperarUsuarios()) {
+            if (usuarios.getEmail().equals(email) && usuarios.getSenha().equals(senha)) {
 
-				if (usuario.getTentativas() >= 3) {
-					usuario.setBloqueado(true);
-				}
+                if (usuarios.isBloqueado() || usuarios.isInativo()) {
+                    System.out.println("Usuario Não pode Acessar o Sistema");
+                    break;
+                }
 
-				daoUsuario.atualizarUsuario(usuario);
-				break;
-			}
-		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-		dispatcher.forward(request, response);
+                Usuario usuario = usuarios;
+                usuario.setTentativas(0);
+                daoUsuario.atualizarUsuario(usuario);
 
-	}
-	
-	private void desbloquearUsuario(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException{
-		
-		HttpSession session = request.getSession();
-		
-		String emailSessao = (String) session.getAttribute("emailSessao");
-		
-		for (Usuario usuario : daoUsuario.recuperarUsuarios()) {
-			if (usuario.getEmail().equals(emailSessao)) {
-				usuario.setSenha(request.getParameter("senha"));
-				usuario.setBloqueado(false);
-				usuario.setTentativas(0);
-				daoUsuario.atualizarUsuario(usuario);
-				
-				if(usuario.isInativo()) {
-					RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-					dispatcher.forward(request, response);
-					return;
-				}
-				
-				if (usuario.isAdministrador()) {
-					RequestDispatcher dispatcher = request.getRequestDispatcher("paginas/administrador/home-adm.jsp");
-					dispatcher.forward(request, response);
-					break;
-				}else {
-					RequestDispatcher dispatcher = request.getRequestDispatcher("paginas/desenvolvedor/home-dev.jsp");
-					dispatcher.forward(request, response);
-					break;
-				}
-			}
-		}
-		
-		
-	}
+                Desenvolvedor desenvolvedor = daoDesenvolvedor.recuperarDesenvolvedorPorIdUsaurio(usuario.getIdUsuario());
 
+                session.setAttribute("usuario", usuario);
+                session.setAttribute("desenvolvedor", desenvolvedor);
+
+                if (usuarios.isAdministrador()) {
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("paginas/administrador/home-adm.jsp");
+                    dispatcher.forward(request, response);
+                    return;
+                } else {
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("paginas/desenvolvedor/home-dev.jsp");
+                    dispatcher.forward(request, response);
+                    return;
+                }
+            } else if (usuarios.getEmail().equals(email)) {
+
+                Usuario usuario = usuarios;
+                usuario.setTentativas(usuarios.getTentativas() + 1);
+
+                if (usuario.getTentativas() >= 3) {
+                    usuario.setBloqueado(true);
+                }
+
+                daoUsuario.atualizarUsuario(usuario);
+                break;
+            }
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void desbloquearUsuario(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+
+        String emailSessao = (String) session.getAttribute("emailSessao");
+
+        for (Usuario usuario : daoUsuario.recuperarUsuarios()) {
+            if (usuario.getEmail().equals(emailSessao)) {
+                usuario.setSenha(request.getParameter("senha"));
+                usuario.setBloqueado(false);
+                usuario.setTentativas(0);
+                daoUsuario.atualizarUsuario(usuario);
+
+                if (usuario.isInativo()) {
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+                    dispatcher.forward(request, response);
+                    return;
+                }
+
+                if (usuario.isAdministrador()) {
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("paginas/administrador/home-adm.jsp");
+                    dispatcher.forward(request, response);
+                    break;
+                } else {
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("paginas/desenvolvedor/home-dev.jsp");
+                    dispatcher.forward(request, response);
+                    break;
+                }
+            }
+        }
+    }
+
+    private void logoutUsuario(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession(false); // Verifica se a sessão existe
+
+        if (session != null) {
+            session.invalidate(); // Invalida a sessão do usuário
+        }
+
+        // Redireciona para a página inicial após logout
+        response.sendRedirect(request.getContextPath() + "/index.jsp");
+    }
 }
