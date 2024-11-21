@@ -7,9 +7,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		TarefaDAOImpl tarefaDAO = new TarefaDAOImpl();
 		
-		Tarefa tarefa = tarefaDAO.recuperarTarefaPorIdUsaurio(1L);
 		
 	}
 }

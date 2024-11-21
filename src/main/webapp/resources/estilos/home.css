@@ -162,9 +162,6 @@ section .header {
     text-align: center;
     font-size: 2.25rem;
     font-weight: 600;
-    background-color: #10b981;
-	padding: 10px; 
-	width: 100px;
 }
 
 .features {
@@ -175,7 +172,7 @@ section .header {
 }
 
 .features .card {
-    background-color: #e5e7eb; /* Fundo claro */
+    background-color: #adaaab; /* Fundo claro */
     padding: 1rem;
     border: 2px solid transparent;
     border-radius: 15px;
@@ -184,7 +181,7 @@ section .header {
 }
 
 .features .card:hover {
-    background-color: #f3f4f6;
+    background-color: #cfcfcf;
     border-color: #10b981; /* Verde */
 }
 
@@ -199,13 +196,13 @@ section .header {
 }
 .features .card h4 {
     margin-bottom: 0.5rem;
-    color: #fff;
+    color: #1f2937;
     font-size: 1.2rem;
     font-weight: 600;
 }
 
 .features .card p {
-    color: #ccc;
+    color: #1f2937;
     margin-bottom: 1rem;
 }
 
@@ -303,7 +300,7 @@ footer .column .logo {
 }
 
 footer .column p {
-    color: #ccc;
+    color: #1f2937;
     margin-bottom: 2rem;
 }
 
@@ -314,7 +311,7 @@ footer .column .socials {
 }
 
 footer .column .socials a {
-    color: #ccc;
+    color: #1f2937;
     border: 1px solid #ccc;
     padding: 5px 10px;
     font-size: 1.25rem;
@@ -323,13 +320,13 @@ footer .column .socials a {
 }
 
 footer .column .socials a:hover {
-    color: #fff;
+    color: #1f2937;
     background-color: rgb(0, 128, 0);
     border-color: rgb(0, 128, 0);
 }
 
 footer .column h4 {
-    color: #fff;
+    color: #1f2937;
     margin-bottom: 2rem;
     font-size: 1.2rem;
     font-weight: 500;
@@ -453,7 +450,54 @@ footer .column > a:hover {
     width: 150px;
     height: auto;
 }
+/* Contêiner que envolve o botão de adicionar tarefa */
+.section-btn-container {
+    display: flex;
+    justify-content: center; /* Centraliza o botão horizontalmente */
+    margin-bottom: 20px; /* Para adicionar um pequeno espaço abaixo */
+}
 
+/* Estilo do botão de adicionar tarefa */
+.add-task-btn {
+    background-color: #10b981; /* Verde */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.add-task-btn:hover {
+    background-color: #45a049; /* Verde mais escuro */
+    transform: scale(1.05); /* Efeito de aumentar ao passar o mouse */
+}
+
+
+/* Estilo do botão de deletar tarefa */
+form .delete-task-btn {
+	z-index:999;
+    background-color: #f44336; /* Vermelho */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    margin-top: 10px; /* Para dar um pequeno espaço entre o botão e outros elementos */
+}
+
+form .delete-task-btn:hover {
+    background-color: #e53935; /* Vermelho mais escuro */
+    transform: scale(1.05); /* Efeito de aumentar ao passar o mouse */
+}
+
+/* Estilo do botão dentro do form de deletar, garantindo que o layout fique correto */
+form .delete-task-btn i {
+    margin-left: 8px; /* Espaçamento entre o texto e o ícone */
+}
 @keyframes fadeIn {
     from {
         opacity: 0;
