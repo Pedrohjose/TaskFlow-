@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>Entrar na Conta</h2>
+        <h2>Login</h2>
         <form action="logar-usuario" method="post">
             <div class="input-field">
                 <input type="email" id="email" name="email" placeholder="Digite seu email" required>
@@ -20,9 +20,9 @@
             <div class="input-field">
                 <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
             </div>
-            <button type="submit" class="button">Entrar</button>
+            <button type="submit" class="button">Login</button>
             <div class="forgot-password">
-                <p>Não possui cadastro? <a href="cadastrar-desenvolvedor">Cadastrar</a></p>
+                <p>Não possui conta? <a href="cadastrar-desenvolvedor">Sign up</a></p>
             </div>
             <%
         	UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();

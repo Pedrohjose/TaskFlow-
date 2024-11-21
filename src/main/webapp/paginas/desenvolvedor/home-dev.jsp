@@ -22,11 +22,7 @@
 
 	<nav>
 		<div class="nav-logo">
-			<a
-				href="<%=request.getContextPath()%>/paginas/desenvolvedor/home-dev.jsp">
-				<img
-				src="<%=request.getContextPath() %>/resources/imagens/home/logohome1.png" class="logo-img" alt="Logotipo SoftLeve">
-			</a>
+				<img src="<%=request.getContextPath() %>/resources/imagens/home/logohome1.png" class="logo-img" alt="Logotipo SoftLeve">
 		</div>
 
 		<ul class="nav-links">
@@ -37,27 +33,23 @@
 	</nav>
 
 	<header class="container">
-		<div class="content">
-			<span class="blur"></span> <span class="blur"></span>
-			<h4>Bem Vindo</h4>
-			<H1>
-				Gereciador de <span>Tarefas</span>, SoftLeve
-			</H1>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-				Earum, ipsum, nisi quas vero culpa reprehenderit itaque quos optio
-				at maiores consequuntur. A sequi cumque facere quis hic nam, officia
-				ratione.</p>
-		</div>
-		<div class="image">
+	<div class="image">
 			<img
 				src="<%=request.getContextPath() %>/resources/imagens/home/header.png">
+		</div>
+		<div class="content">
+			<h4>Bem Vindo</h4>
+			<H1>
+				Gestão de <span>Tarefas</span> com a <u>SoftLeve</u>
+			</H1>
+			<p>SoftLeve é uma empresa especializada no desenvolvimento de soluções inovadoras em software de gestão de tarefas. Oferecemos ferramentas inteligentes e intuitivas que simplificam processos, otimizam o tempo e aumentam a produtividade das equipes. Com foco em eficiência e personalização, ajudamos empresas de diversos segmentos a alcançar seus objetivos com organização e praticidade.</p>
 		</div>
 	</header>
 
 	<section class="container">
 
 		<h2 class="header">
-			<button type="button" onclick="openCriarTarefa()">Tarefa</button>
+			<button type="button" onclick="openCriarTarefa()">Cadastrar Tarefa</button>
 		</h2>
 
 		<div class="features">
@@ -140,11 +132,10 @@
 		</div>
 	</div>
 	<footer class="container">
-		<span class="blur"></span> <span class="blur"></span>
 		<div class="column">
 			<div class="logo">
 				<img
-					src="<%=request.getContextPath() %>/resources/imagens/home/logo.png">
+					src="<%=request.getContextPath() %>/resources/imagens/home/logohome1.png">
 			</div>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 			<div class="socials">

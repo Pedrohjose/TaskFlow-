@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cadastro de Usuário</title>
+<title>Sign up</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/estilos/login.css">
 </head>
 <body>
 	<div class="login-container">
-		<h2>Cadastro de Usuário</h2>
+		<h2>Sign up</h2>
 		<form id="form-cadastro" action="inserir-desenvolvedor" method="post">
 			<div class="input-field">
 				<input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
@@ -36,7 +36,10 @@
 					<option value="FULL_STACK">Full Stack</option>
 				</select>
 			</div>
-			<button type="submit" class="button">Cadastrar</button>
+			<button type="submit" class="button">Sign up</button>
+			<div class="forgot-password">
+                <p>Possui conta? <a href="index.jsp">Login</a></p>
+            </div>
 		</form>
 	</div>
 <script src="<%=request.getContextPath()%>/resources/scripts/login.js">
