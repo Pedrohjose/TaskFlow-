@@ -1,5 +1,6 @@
 /target/
 
+.gitmodules
 .settings/
 .project
 .classpath
