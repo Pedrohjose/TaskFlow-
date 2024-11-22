@@ -2,7 +2,7 @@
 # 🎯 **TaskFlow**
 
 ## 📘 Sobre o Projeto
-O **TaskFlow** é um sistema , focado em desenvolver soluções que transformam a gestão de tarefas em ambientes corporativos. Nossa equipe é composta por profissionais apaixonados, cada um trazendo habilidades únicas e uma visão compartilhada de inclusão e diversidade no mercado de trabalho.
+O **TaskFlow** é um sistema , focado em desenvolver soluções que transformam a gestão de tarefas. Nossa equipe é composta por profissionais apaixonados, cada um trazendo habilidades únicas e uma visão compartilhada de inclusão e diversidade no mercado de trabalho.
 
 ## 🌟 Objetivos
 - **Gerenciamento de Tarefas:** Facilitar o gerenciamento de tarefas para desenvolvedores e equipes, oferecendo controle sobre o ciclo de vida de cada tarefa.
